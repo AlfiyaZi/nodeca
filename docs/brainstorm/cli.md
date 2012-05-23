@@ -19,20 +19,6 @@ Property `commandName` is optional. If empty or not exist, then take file name.
 
 ***
 
-Property `initStages` is optional. Array of nodeca init stages. 
-Such element is array of stage name and base function.
-
-
-```javascript
-module.exports.initStages= [
-  ['models-tree', Nlib.load_models],
-  ['shared-tree', Nlib.load_server_api_subtree],
-]
-```
-
-*Note:* Base variants of most used function see in Nlib api
-
-***
 Property `parserParameters` is hash with parser parameters
 
 ```javascript
@@ -57,6 +43,30 @@ module.exports.commandLineArguments = [
 ];
 
 ```
+
+*** 
+
+Method `run` method has two argument callback and hash with input parameters
+
+In this method vailable all models and other nodeca resources
+Also `Nlib.init` contain some support initial function
+
+Code example
+
+```javascript
+module.exports.run = function (args, callback) {
+  Async.series([
+    require('../lib/init/mongoose'),
+
+    NLib.init.loadModels,
+  ], function(err) {
+    //some code
+    callback(err)
+  });
+};
+```
+
+
 
 *Note:* information about argument options see in [guide][argument]
 

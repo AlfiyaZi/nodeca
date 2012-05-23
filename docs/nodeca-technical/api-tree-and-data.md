@@ -44,7 +44,9 @@ nodeca
     assets_path           # path to temp dir with bundled assets
     assets_server         # assets Server filled with assets
     i18n                  # translator (BabelFish) instance
-    apps                  # array of { name, absolute_path } for each loaded app 
+    apps                  # array of { name, absolute_path } for each loaded app
+    cli_args              # hash with parsed command line argument key->value
+                          # current command in `command_name` key
 
     # client-specific
 
